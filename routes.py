@@ -3,8 +3,6 @@
 
 from flask import Flask, request
 
-from main import insertUser
-
 # create application backend
 app = Flask("API")
 
@@ -42,5 +40,11 @@ def genResponse(status, message, contentName=False, content=False):
         response[contentName] = content
 
     return response
+
+def insertUser(name, user, password):
+    return {"id": 1, 
+            "name": name,
+            "username": user,
+            "password": password}
 
 app.run()
