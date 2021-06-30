@@ -2,6 +2,7 @@
 # These requests will call different functions in the backend
 
 from flask import Flask, request
+from main import insertUser
 
 # create application backend
 app = Flask("API")
@@ -19,11 +20,11 @@ def addUser():
 
     # check if all parameters have been specified in the request
     if ("name" not in body):
-        return {"status": 400, "mensagem": "parameter 'name' is needed"}
+        return {"status": 400, "message": "parameter 'name' is needed"}
     if ("email" not in body):
-        return {"status": 400, "mensagem": "parameter 'email' is needed"}
+        return {"status": 400, "message": "parameter 'email' is needed"}
     if ("password" not in body):
-        return {"status": 400, "mensagem": "parameter 'password' is needed"}
+        return {"status": 400, "message": "parameter 'password' is needed"}
 
     # call insertUser function passing all arguments sent by user
     user = insertUser(body["name"], body["email"], body["password"])
@@ -40,11 +41,5 @@ def genResponse(status, message, contentName=False, content=False):
         response[contentName] = content
 
     return response
-
-def insertUser(name, user, password):
-    return {"id": 1, 
-            "name": name,
-            "username": user,
-            "password": password}
 
 app.run()
