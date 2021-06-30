@@ -8,12 +8,12 @@ from main import insertUser
 app = Flask("API")
 
 # define "hello" route, which uses method GET and calls function hello()
-@app.route("/hello", methods=["GET"])
+@app.route("/get/hello", methods=["GET"])
 def hello():
     return {"hello": "world"}
 
 # define "addUser" route, which uses method POST and calls function addUser()
-@app.route("/addUser", methods=["POST"])
+@app.route("/post/addUser", methods=["POST"])
 def addUser():
     # store user info in body
     body = request.get_json()
